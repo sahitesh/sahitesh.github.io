@@ -471,32 +471,32 @@
 			  svg1.selectAll(".mapSvg").attr("transform", "translate(" + d3.event.translate + ") scale(" + d3.event.scale + ")");
 			}
 
-			// svg
-			// .style({
-			//   'border':'0px solid #000'
-			// })
-			// .call(zoom);
+			svg
+			.style({
+			  'border':'0px solid #000'
+			})
+			.call(zoom);
 
-			//  svg.selectAll("foreignObject")
-			//     .data("1")
-			//     .enter()
-			//     .append("foreignObject")
-			//     .attr("class", "reset")
-			//     .attr("float","left")
-			//     .attr("x", width-60)
-			//     .attr("y", 10)
-			//     .append("xhtml:body")
-			//     .html(function(d){ return "<form><input type=button class=button id=reset value=reset disabled=true /></form>"})
-			//     .on("click",function(){
-      //             d3.transition().duration(250).tween("zoom", function() {
-			//         var si = d3.interpolate(sZoom, 1);
-			//         var xi = d3.interpolate(xZoom, 0);
-			//         var yi = d3.interpolate(yZoom, 0);
-			//           return function(t){
-			//             svg1.call(zoom.translate([xi(t),yi(t)]).scale(si(t)).event);
-			//           }
-			//       });
-			// });
+			 svg.selectAll("foreignObject")
+			    .data("1")
+			    .enter()
+			    .append("foreignObject")
+			    .attr("class", "reset")
+			    .attr("float","left")
+			    .attr("x", width-60)
+			    .attr("y", 10)
+			    .append("xhtml:body")
+			    .html(function(d){ return "<form><input type=button class=button id=reset value=reset disabled=true /></form>"})
+			    .on("click",function(){
+                  d3.transition().duration(250).tween("zoom", function() {
+			        var si = d3.interpolate(sZoom, 1);
+			        var xi = d3.interpolate(xZoom, 0);
+			        var yi = d3.interpolate(yZoom, 0);
+			          return function(t){
+			            svg1.call(zoom.translate([xi(t),yi(t)]).scale(si(t)).event);
+			          }
+			      });
+			});
 
 
 //add legend-------------------------------------------------------------
