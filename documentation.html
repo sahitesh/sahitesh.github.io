@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sahitesh Reddypelly</title>
+ <link rel="shortcut icon" href="images/icon.png" />
+<!-- Bootstrap -->
+<link rel="stylesheet" href="css/bootstrap.min.css"/>
+<!-- FontAwesome -->
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!-- Animation -->
+<link rel="stylesheet" href="css/animate.css" />
+<!-- Main color style -->
+<link rel="stylesheet" href="css/red.css"/>
+<!-- Template styles-->
+<link rel="stylesheet" href="css/custom.css" />
+
+
+    <style>
+
+      	path {
+              fill: none;
+              stroke: #000;
+              stroke-width: .1px;
+              stroke-linejoin: round;
+              stroke-linecap: round;
+            }
+
+    	.axis {
+    	  font-size: : 10px;
+		    stroke: #000;
+		    shape-rendering: crispEdges;
+		    stroke-width: 1px;
+		}
+
+    
+	    .axis path, line {
+		      fill: black;
+		      stroke: #000;
+		      shape-rendering: crispEdges;
+		      stroke-width: 1px;
+		    }
+
+	    .chart1 text{
+	        font-size: 10px;
+	    }
+
+	    .chart2 text{
+	        font-size: 10px;
+	    }
+
+
+		.legend {
+		    padding: 5px;
+		    font: 10px sans-serif;
+		    background: yellow;
+		    box-shadow: 2px 2px 1px #888;
+		}
+		.legendMap {
+			background: linear-gradient(to right, #FCA107, #7F3121);
+			box-shadow: 2px 2px 1px #888;
+		}
+
+    </style>
+    <script src="d3/d3.v3.min.js"></script>
+    <script src="d3/d3-geo-projection.js"></script>
+
+  </head>
+
+<header id="section_header" class="navbar-fixed-top main-nav" role="banner">
+<div class="container">
+  <!-- <div class="row"> -->
+     <div class="navbar-header">
+      
+     </div><!--Navbar header End-->
+
+      <nav class="collapse navbar-collapse navigation" id="bs-example-navbar-collapse-1" role="navigation">
+      <ul class="nav navbar-nav navbar-left ">
+          <li> <a href="index.html" class="page-scroll">London's Cholera Map</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right ">
+          <li> <a href="index.html" class="page-scroll">Project</a></li>
+          <li><a href="about.html" class="page-scroll" >About</a> </li>
+          <li class="active"><a href="documentation.html" class="page-scroll" >Documentation</a> </li>
+          <li><a href="youtube.html" class="page-scroll" >Youtube</a> </li>
+        </ul>
+       </nav>
+    </div><!-- /.container-fluid -->
+</header>
+
+<body>
+  <h3>Design Process</h3>
+  <h3>Design Process</h3>
+  <p>
+  From the requirements, I designed a basic layout as below. 
+  </p>
+  <img src="1.jpg" width="50%" height="30%" ></img></br>
+  <p>
+  Now, I did research online on the existing John Snow's Cholera maps. I came across multiple useful links such as <a href="http://blog.rtwilson.com/john-snows-cholera-data-in-more-formats/" class="page-scroll" >Robin's Blog,  </a> <a href="https://www.theguardian.com/news/datablog/2013/mar/15/john-snow-cholera-map"> Post on guardian</a> and <a href ="https://www.arcgis.com/apps/PublicInformation/index.html?appid=d7deb67f810d46dfacb80ff80ac224e9">ArcGIS</a>. These are informative and gave some ideas on design.
+  </p>
+  <p>
+    I have created a json data from the streets json and added pumps data, workhouse and brewery from a external source[2].
+  </p>
+  <p>Some intermediate stages of developement are:</br>
+      <img src="2.png" width="50%" height="30%" ></img></br>
+      <img src="3.png" width="50%" height="30%" ></img></br>
+  </p>
+  <ul>
+  <li>As per the requirements, I started with a line map of all streets. But, to make it look better and similar to John snow's map I had modified the line with thickness to look like streets</li>
+  <li>Map has to show age, gender. So, I choose shape to show gender and color for age in the same map. A simple making of female to circle, male to rectangle makes this possible.</li>
+  <li>There is a choice now to use a line chart or a bar chart for selecting the day we want to visualize.</li>
+  <li>Though both of them represent the trend of deaths over time. Bar plot will stand out in case we have to make a selection of a day since we have the whole rectangle to hover over.</li>
+  <li>So, I plotted a bar graph over time for each day with frequency of people dying. Added the functionality to update Original Map when we hover over a day</li>
+  <li>To choose colors without any issues for color blindness I used color brewer with 6 categories for the age group and 2 diverging colors for the gender</li>
+  <li>I checked the colors for issues in turn using color orcle tool</li>
+  <li>To represent pumps, I used a svg from online available for free from flaticon.com</li>
+
+  </ul>
+
+<h3>Reference</h3>
+<p >
+I have used bootstrap themes for header and layout alignment.</br>
+I have taken code snippets from the d3 documentation[3],stackoverflow[4], and the github[5] where there are many sources of D3 API and functions. </br>
+</p>
+<p>
+[1]Ke Zhuang.</br>
+<a href="https://zhuangke16.github.io/H517-Project1/" class="page-scroll" >https://zhuangke16.github.io/H517-Project1/</a>  
+</p>
+
+<p>
+[2]Shuxian Wu.  Interactive Data Visualization for the Web with D3</br>
+
+<a href="https://nekogulu.github.io/SX-W/index.html" class="page-scroll" >https://nekogulu.github.io/SX-W/index.html</a>  
+</p>
+
+<p>
+[3]D3 Documentation.</br>
+<a href="https://github.com/d3/d3/wiki" class="page-scroll" >https://github.com/d3/d3/wiki</a>  
+</p>
+
+<p>[4]StackOverFlow</br>
+  <a href="https://stackoverflow.com/" class="page-scroll" >https://stackoverflow.com</a>  
+</p>
+
+<p>[5]D3 Github</br>
+  <a href="https://github.com/d3/d3-3.x-api-reference" class="page-scroll" >https://github.com/d3/d3-3.x-api-reference</a>  
+  </p>
+
+<p>[6]Colororacle</br>
+<a href="http://colororacle.org/" class="page-scroll" >http://colororacle.org</a>  
+</p>
+
+<p>[7]Bl.Ocks</br>
+<a href="https://bl.ocks.org" class="page-scroll" >https://bl.ocks.org</a>  
+</p>
+
+
+</body>
+</html>
