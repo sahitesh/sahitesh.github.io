@@ -76,7 +76,7 @@
 
       <nav class="collapse navbar-collapse navigation" id="bs-example-navbar-collapse-1" role="navigation">
       <ul class="nav navbar-nav navbar-left ">
-          <li> <a href="index.html" class="page-scroll">Sahitesh Reddypelly</a></li>
+          <li> <a href="index.html" class="page-scroll">London's Cholera Map</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right ">
           <li class="active"> <a href="index.html" class="page-scroll">Project</a></li>
@@ -89,24 +89,6 @@
 </header>
 
   <body>
-      <section class="section text-center light-bg">
-					<h1 class="h1 alt-font medium-weight em">
-						London's 1854 cholera epidemic Visualization</h1>
-      </section>
-    
-      <div id="option">
-          <input name="GenderButton" 
-                 type="button" 
-                 value="Show by gender" 
-                 onclick="update_gender()" />
-      
-            <input name="AgeButton" 
-                 type="button" 
-                 value="Show by age" 
-                 onclick="update_age()" />
-      </div>
-  
-    
    <script>
         var selector = 0;
         function update_gender(){
@@ -137,11 +119,11 @@
             var y = d3.scale.linear().range([heightChart, 0]);
 
             var svg = d3.select("body").append("svg").attr("width", width).attr("height", height).attr("class", "map")
-                        .attr("transform", "translate(-40 ,45)") ;
+                        .attr("transform", "translate(700 ,45)") ;
             var svg2 = d3.select("body").append("svg").attr("width", 10).attr("height", height);
             
             var svg3 = d3.select("body").append("svg").attr("width",widthChart).attr("height", height)
-                        .attr("transform", "translate(" + (-20) + "," + margin.top + ")") ;
+                        .attr("transform", "translate(" + (-500) + "," + margin.top + ")") ;
             var svg1 = d3.select(".map").append("svg").attr("width", width).attr("height", height).attr("class","map")
                         .attr("transform", "translate(0 ,0)");
             
@@ -197,7 +179,8 @@
         var deathdayChart = svg3.append("g").attr("class", "chart1");
         var deathageChart = svg3.append("svg").append("g").attr("class", "chart2").attr("transform","translate(0,"+(heightChart+110)+")");  
 
-             
+        deathageChart.attr("transform", "translate(200 ,330)");
+
 
               lineSvg.selectAll("path")
                     .data(lines)
@@ -217,43 +200,43 @@
 
 
 //pump image
-			var svg_name = "https://raw.githubusercontent.com/Nekogulu/SX-W/master/images/drop6.svg";
-			// d3.xml(svg_name,"image/svg+xml", function(xml) {
+			var svg_name = "pump.svg";
+			d3.xml(svg_name,"image/svg+xml", function(xml) {
 			 
-			//   // Take xml as nodes.
-			//   var imported_node = document.importNode(xml.documentElement, true);
+			  // Take xml as nodes.
+			  var imported_node = document.importNode(xml.documentElement, true);
         
-			//   pointSvg.selectAll(".point")
-			//   .data(points)
-			//   .enter()
-			//   .append("g")
-			//   .attr("class", "pumpSvg")
-			//   .attr("class","svg_image")
+			  pointSvg.selectAll(".point")
+			  .data(points)
+			  .enter()
+			  .append("g")
+			  .attr("class", "pumpSvg")
+			  .attr("class","svg_image")
 			  
-			//   .each(function(d,i){
-			//     // Clone and append xml node to each data binded element.
-			//     var imported_svg = this.appendChild(imported_node.cloneNode(true));
-			//   })
-			//   .attr("transform", function(d,i){return "translate(" + projection(d.geometry.coordinates) + ") scale(0.03)";});
+			  .each(function(d,i){
+			    // Clone and append xml node to each data binded element.
+			    var imported_svg = this.appendChild(imported_node.cloneNode(true));
+			  })
+			  .attr("transform", function(d,i){return "translate(" + projection(d.geometry.coordinates) + ") scale(0.06)";});
 
-			// });
-      pointSvg.selectAll(".point")
-	    .data(points)
-      .enter()
-      .append("g")
-      .append("rect")
-      .attr("transform", function(d) {
-          //whatever transformation that needs to be done
-          return "translate(" + projection(d.geometry.coordinates) + ")";
-      })
-      .attr("x", function(d){d.geometry.coordinates[0]})
-      .attr("y", function(d){d.geometry.coordinates[1]})
-      .attr("width", 10)
-      .attr("height", 10)
-      .style("fill", "#4db8ff")
-      .style("stroke-width", "0.5")
-      .style("stroke", "black")
-      .classed("pin", true); 
+			});
+      // pointSvg.selectAll(".point")
+	    // .data(points)
+      // .enter()
+      // .append("g")
+      // .append("rect")
+      // .attr("transform", function(d) {
+      //     //whatever transformation that needs to be done
+      //     return "translate(" + projection(d.geometry.coordinates) + ")";
+      // })
+      // .attr("x", function(d){d.geometry.coordinates[0]})
+      // .attr("y", function(d){d.geometry.coordinates[1]})
+      // .attr("width", 20)
+      // .attr("height", 10)
+      // .style("fill", "#4db8ff")
+      // .style("stroke-width", "0.5")
+      // .style("stroke", "black")
+      // .classed("pin", true); 
 
 
             // pointSvg.selectAll("text")
@@ -279,7 +262,7 @@
                     .attr("d", path)
                     .style("stroke-width", "1")
                     .style("stroke", "black")
-                    .style("fill", "#39b7f2")
+                    .style("fill", "#663300")
                     ;
                     
 //workhouse
@@ -518,17 +501,17 @@
 
 //add legend-------------------------------------------------------------
             var color_fm = {
-              0:'#a86f32',
-              1:'#65a832'
+              0:'#af8dc3',
+              1:'#7fbf7b'
             };
 
             var color = { 
-            			  0:["0-10", "#f2f0f7"], 
-            			  1:["11-20", "#dadaeb"], 
-            			  2:["21-40", "#bcbddc"],
-            			  3:["41-60", "#9e9ac8"],
-            			  4:["61-80", "#756bb1"],
-            			  5:[">80", "#54278f"]
+            			  0:["0-10", "#fee5d9"], 
+            			  1:["11-20", "#fcbba1"], 
+            			  2:["21-40", "#fc9272"],
+            			  3:["41-60", "#fb6a4a"],
+            			  4:["61-80", "#de2d26"],
+            			  5:[">80", "#a50f15"]
             			}; 
             var color2 = ["1","2","3","4","5","6"];
 
@@ -549,14 +532,14 @@
                 var g = d3.select(this);
                 g.append("rect")
                   .attr("x", i*56+5)
-                  .attr("y", 15)
+                  .attr("y", 55)
                   .attr("width", 10)
                   .attr("height", 10)
                   .style("fill", color[String(i)][1]);
                 
                 g.append("text")
                   .attr("x", i*56+17)
-                  .attr("y", 25)
+                  .attr("y", 65)
                   .attr("height",10)
                   .attr("width",100)
                   .style("fill","black")
@@ -564,33 +547,37 @@
 
               });
 			var legendPump = legendMap.selectAll('.map').data("1").enter();
-			           legendPump.append("g")
-			            	  .append("rect")
-			            	  .attr("x", width-80)
-			            	  .attr("y", 50)
-			            	  .attr("width", 10)
-			            	  .attr("height", 10)
-                      .style("fill","#4db8ff");
-                legendPump.append("text")
-            	  .attr("x", width-70)
-            	  .attr("y", 60)
-            	  .text("Pump");
+			//            legendPump.append("g")
+			//             	  .append("rect")
+			//             	  .attr("x", width-80)
+			//             	  .attr("y", 50)
+			//             	  .attr("width", 10)
+			//             	  .attr("height", 10)
+      //                 .style("fill","#4db8ff");
+      //           legendPump.append("text")
+      //       	  .attr("x", width-70)
+      //       	  .attr("y", 60)
+      //       	  .text("Pump");
 			           	
-			// var svg_name = "https://raw.githubusercontent.com/Nekogulu/SX-W/master/images/drop6.svg";
-			// d3.xml(svg_name,"image/svg+xml", function(xml) { 
-			//   // Take xml as nodes.
-			// 	var imported_node = document.importNode(xml.documentElement, true);
+			var svg_name = "pump.svg";
+			d3.xml(svg_name,"image/svg+xml", function(xml) { 
+			  // Take xml as nodes.
+				var imported_node = document.importNode(xml.documentElement, true);
 							  
-			// 	legendPump.append("g")
-			// 	  .attr("class", "pumpLegend")
-			// 	  .attr("class","svg_image")
-			// 	  .attr("opacity", "1.0")
-			// 	  .each(function(d,i){
-			// 	    // Clone and append xml node to each data binded element.
-			// 	    var imported_svg = this.appendChild(imported_node.cloneNode(true));
-			// 	  })
-			// 	  .attr("transform", function(d,i){return "translate(" + (width-202) + ",13) scale(0.03)";});
-			// });
+				legendPump.append("g")
+				  .attr("class", "pumpLegend")
+				  .attr("class","svg_image")
+				  .attr("opacity", "1.0")
+				  .each(function(d,i){
+				    // Clone and append xml node to each data binded element.
+				    var imported_svg = this.appendChild(imported_node.cloneNode(true));
+				  })
+				  .attr("transform", function(d,i){return "translate(" + (width-80) + ",65) scale(0.03)";});
+			});
+      legendPump.append("text")
+            	  .attr("x", width-65)
+            	  .attr("y", 80)
+            	  .text("Pump");
 
 
            
@@ -598,13 +585,13 @@
             var legendMale = legendMap.selectAll('.map').data("1").enter();
            legendMale.append("g")
             	  .append("rect")
-            	  .attr("x", width-150)
+            	  .attr("x", width-80)
             	  .attr("y", 50)
             	  .attr("width", 10)
             	  .attr("height", 10)
             	  .style("fill", "black");
            	legendMale.append("text")
-            	  .attr("x", width-140)
+            	  .attr("x", width-65)
             	  .attr("y", 60)
             	  .text("Male");
 
@@ -612,11 +599,11 @@
            ledgendFemale.append("g")
             	  .append("circle")
             	  .attr("r",6)
-            	  .attr("transform", "translate("+(width-210)+",55)")
+            	  .attr("transform", "translate(425,37)")
             	  .attr("fill", "black");
            	ledgendFemale.append("text")
-            	  .attr("x", width-203)
-            	  .attr("y", 60)
+            	  .attr("x", width-65)
+            	  .attr("y", 40)
             	  .text("Female");
 
 //chart1-------------------------------------------------------------------------
@@ -626,13 +613,15 @@
                   .append("text")
                   .attr("transform", "translate(" + (widthChart/2 -90)+ ","+(heightChart+60)+")")
                   .attr("class", "titleChart1")
-                  .text("Date of death(clickable)");
+                  .text("Date of death")
+                  .style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'});
 
             deathdayChart.append("g")
                   .attr("class", "xaxis")
                   .attr("transform", "translate(30," + heightChart + ")")
                   .call(xAxis)
                   .selectAll("text")
+                  .style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'})
                   .style("text-anchor", "end")
                   .attr("dx", "-0.8em")
                   .attr("dy", "-.55em")
@@ -640,9 +629,11 @@
 
             deathdayChart.append("g")
                   .attr("class", "yaxis")
+                  .style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'})
                   .attr("transform", "translate(50,0)")
                   .call(yAxis)
-                  .append("text")  
+                  .append("text")
+                  .style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'})  
                   .attr("transform", "rotate(-90)")
                   .attr("y", 6)
                   .attr("dy", "-3.71em")
@@ -653,22 +644,22 @@
             deathdayChart.selectAll("bar")
                   .data(deathdays)
                   .enter().append("rect").attr("class", "chart1Bar")
-                  .style("fill", "#3333ff")
+                  .style("fill", "#91bfdb")
                   .attr("x", function(d) { return x(d.date)+30; })
                   .attr("width", x.rangeBand())
                   .attr("y", function(d) { return y(d.deaths); })
                   .attr("height", function(d) { return heightChart - y(d.deaths); })
                   .style("cursor","pointer")
-                  .on("click",function(d){
+                  .on("mouseover",function(d){
 
                     var seADBt = document.getElementById("setDay");
                     seADBt.disabled = false;
 
                     var day = d.date;
                     deathdayChart.selectAll(".chart1Bar")
-                        .style("fill","#3333ff")
+                        .style("fill","#91bfdb")
                         .filter(function(d){return d.date==day;}) 
-                        .style("fill", "#33cc33");
+                        .style("fill", "#fc8d59");
 
                     newData = deaths.features.filter(function(d){return d.properties.deathday==day;}); 
 
@@ -706,9 +697,64 @@
 	                            .style("fill", function(d){return d.properties.color;})
 	                            .style("stroke-width", "0.5")
 	                            .style("stroke", "black");
-	   
-	                    
-                      newRowsMale.exit().remove(); 
+                      
+                    newRowsMale.exit().remove(); 
+                var choices1 = ["0-10", "11-20", "21-40", "41-60", "61-80", "> 80"];
+            
+            var newdeaths = deaths.features.filter(function(d){return d.properties.deathday == day})
+
+            var fnewAgeGroup1 = newdeaths.features.filter(function(d){return d.properties.age == choices1[0]&& d.properties.sex == "male";});
+            var fnewAgeGroup2 = newdeaths.features.filter(function(d){return d.properties.age == choices1[1]&& d.properties.sex == "male";});
+            var fnewAgeGroup3 = newdeaths.features.filter(function(d){return d.properties.age == choices1[2]&& d.properties.sex == "male";});
+            var fnewAgeGroup4 = newdeaths.features.filter(function(d){return d.properties.age == choices1[3]&& d.properties.sex == "male";});
+            var fnewAgeGroup5 = newdeaths.features.filter(function(d){return d.properties.age == choices1[4]&& d.properties.sex == "male";});
+            var fnewAgeGroup6 = newdeaths.features.filter(function(d){return d.properties.age == choices1[5]&& d.properties.sex == "male";});
+
+            var fageDataMale = [
+                {"age":"0-10", "number":newAgeGroup1.length},
+                {"age":"11-20", "number":newAgeGroup2.length},
+                {"age":"21-40", "number":newAgeGroup3.length},
+                {"age":"41-60", "number":newAgeGroup4.length},
+                {"age":"61-80", "number":newAgeGroup5.length},
+                {"age":"> 80", "number":newAgeGroup6.length}
+            ];
+
+            fnewAgeGroup1 = deaths.features.filter(function(d){return d.properties.age == choices1[0]&& d.properties.sex == "female";});
+            fnewAgeGroup2 = deaths.features.filter(function(d){return d.properties.age == choices1[1]&& d.properties.sex == "female";});
+            fnewAgeGroup3 = deaths.features.filter(function(d){return d.properties.age == choices1[2]&& d.properties.sex == "female";});
+            fnewAgeGroup4 = deaths.features.filter(function(d){return d.properties.age == choices1[3]&& d.properties.sex == "female";});
+            fnewAgeGroup5 = deaths.features.filter(function(d){return d.properties.age == choices1[4]&& d.properties.sex == "female";});
+            fnewAgeGroup6 = deaths.features.filter(function(d){return d.properties.age == choices1[5]&& d.properties.sex == "female";});
+
+            var fageDataFemale = [
+                {"age":"0-10", "number":newAgeGroup1.length},
+                {"age":"11-20", "number":newAgeGroup2.length},
+                {"age":"21-40", "number":newAgeGroup3.length},
+                {"age":"41-60", "number":newAgeGroup4.length},
+                {"age":"61-80", "number":newAgeGroup5.length},
+                {"age":"> 80", "number":newAgeGroup6.length}
+            ];
+
+            deathageChart.selectAll("bar")
+                  .data(fageDataMale)
+                  .enter()
+                  .append("rect").attr("class", "chart2Bar")
+                  .style("fill", color_fm[1])
+                  .attr("x", function(d) { return x2(d.age)+20; })
+                  .attr("width", x.rangeBand())
+                  .attr("y", function(d) { return y2(d.number); })
+                  .attr("height", function(d) { return heightChart - y2(d.number); });
+            
+            deathageChart.selectAll("bar")
+                  .data(fageDataFemale)
+                  .enter()
+                  .append("rect").attr("class", "chart2Bar")
+                  .style("fill", color_fm[0])
+                  .attr("x", function(d) { return x2(d.age)+8; })
+                  .attr("width", x.rangeBand())
+                  .attr("y", function(d) { return y2(d.number); })
+                  .attr("height", function(d) { return heightChart - y2(d.number); });          
+                      
                   });
             
 
@@ -720,6 +766,7 @@
                .data(deathdays)
                .enter()
                .append("text")
+               .style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'})  
                .text(function(d) {
                     return d.deaths;
                })
@@ -731,16 +778,16 @@
                .attr("font-family", "sans-serif")
                .attr("font-size", 12)
                .attr("fill", "black")
-               .on("click",function(d){
+               .on("mouseover",function(d){
 
                     var seADBt1 = document.getElementById("setDay");
                     seADBt1.disabled = false;
 
                     var day = d.date;
                     deathdayChart.selectAll(".chart1Bar")
-                        .style("fill","#3333ff")
+                        .style("fill","#91bfdb")
                         .filter(function(d){return d.date==day;}) 
-                        .style("fill", "#33cc33");
+                        .style("fill", "#fc8d59");
 
                     newData = deaths.features.filter(function(d){return d.properties.deathday==day;});    
 
@@ -781,6 +828,62 @@
 	   
 	                    
                       newRowsMale.exit().remove();
+
+                      var choices1 = ["0-10", "11-20", "21-40", "41-60", "61-80", "> 80"];
+            
+            var newdeaths = deaths.features.filter(function(d){return d.properties.deathday == day})
+
+            var fnewAgeGroup1 = newdeaths.features.filter(function(d){return d.properties.age == choices1[0]&& d.properties.sex == "male";});
+            var fnewAgeGroup2 = newdeaths.features.filter(function(d){return d.properties.age == choices1[1]&& d.properties.sex == "male";});
+            var fnewAgeGroup3 = newdeaths.features.filter(function(d){return d.properties.age == choices1[2]&& d.properties.sex == "male";});
+            var fnewAgeGroup4 = newdeaths.features.filter(function(d){return d.properties.age == choices1[3]&& d.properties.sex == "male";});
+            var fnewAgeGroup5 = newdeaths.features.filter(function(d){return d.properties.age == choices1[4]&& d.properties.sex == "male";});
+            var fnewAgeGroup6 = newdeaths.features.filter(function(d){return d.properties.age == choices1[5]&& d.properties.sex == "male";});
+
+            var fageDataMale = [
+                {"age":"0-10", "number":newAgeGroup1.length},
+                {"age":"11-20", "number":newAgeGroup2.length},
+                {"age":"21-40", "number":newAgeGroup3.length},
+                {"age":"41-60", "number":newAgeGroup4.length},
+                {"age":"61-80", "number":newAgeGroup5.length},
+                {"age":"> 80", "number":newAgeGroup6.length}
+            ];
+
+            fnewAgeGroup1 = deaths.features.filter(function(d){return d.properties.age == choices1[0]&& d.properties.sex == "female";});
+            fnewAgeGroup2 = deaths.features.filter(function(d){return d.properties.age == choices1[1]&& d.properties.sex == "female";});
+            fnewAgeGroup3 = deaths.features.filter(function(d){return d.properties.age == choices1[2]&& d.properties.sex == "female";});
+            fnewAgeGroup4 = deaths.features.filter(function(d){return d.properties.age == choices1[3]&& d.properties.sex == "female";});
+            fnewAgeGroup5 = deaths.features.filter(function(d){return d.properties.age == choices1[4]&& d.properties.sex == "female";});
+            fnewAgeGroup6 = deaths.features.filter(function(d){return d.properties.age == choices1[5]&& d.properties.sex == "female";});
+
+            var fageDataFemale = [
+                {"age":"0-10", "number":newAgeGroup1.length},
+                {"age":"11-20", "number":newAgeGroup2.length},
+                {"age":"21-40", "number":newAgeGroup3.length},
+                {"age":"41-60", "number":newAgeGroup4.length},
+                {"age":"61-80", "number":newAgeGroup5.length},
+                {"age":"> 80", "number":newAgeGroup6.length}
+            ];
+
+            deathageChart.selectAll("bar")
+                  .data(fageDataMale)
+                  .enter()
+                  .append("rect").attr("class", "chart2Bar")
+                  .style("fill", color_fm[1])
+                  .attr("x", function(d) { return x2(d.age)+20; })
+                  .attr("width", x.rangeBand())
+                  .attr("y", function(d) { return y2(d.number); })
+                  .attr("height", function(d) { return heightChart - y2(d.number); });
+            
+            deathageChart.selectAll("bar")
+                  .data(fageDataFemale)
+                  .enter()
+                  .append("rect").attr("class", "chart2Bar")
+                  .style("fill", color_fm[0])
+                  .attr("x", function(d) { return x2(d.age)+8; })
+                  .attr("width", x.rangeBand())
+                  .attr("y", function(d) { return y2(d.number); })
+                  .attr("height", function(d) { return heightChart - y2(d.number); }); 
                   });
 
                deathdayChart.selectAll("foreignObject")
@@ -793,7 +896,7 @@
                         .attr("width", 60)
                         .append("xhtml:body")
                         .html(function(d){ return "<form><input type=button class=button id=setDay value=reset /></form>"})
-                        .on("click",updateDeaths);
+                        .on("mouseover",updateDeaths);
 
 
 
@@ -847,13 +950,15 @@
 //chart2 Male-------------------------------------------------------------------
             deathageChart.append("g")
                   .append("text")
-                  .attr("transform", "translate(" + (widthChart/2 -90)+ ",0)")
+                  .attr("transform", "translate(" + (widthChart/2 -250)+ ",0)")
                   .attr("class", "titleChart2")
-                  .text("Ages of death sort in sex");
+                  .style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'})  
+                  .text("Age of death by Gender");
 
             deathageChart.append("g")
                   .attr("class", "xaxis2")
                   .attr("transform", "translate(5," + heightChart+ ")")
+                  .style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'})  
                   .call(xAxis2)
                   .append("text")
                   .attr("x",10)
@@ -863,18 +968,21 @@
             deathageChart.append("text")
                   .attr("class", "chart2XAxisText")
                   .style("text-anchor", "end")
-                  .attr("x",widthChart-50)
-                  .attr("y",heightChart+15)
-                  .text("Age");
+                  .attr("x",widthChart-530)
+                  .attr("y",heightChart+30)
+                  .text("Age")
+                  .style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'})  ;
 
             deathageChart.append("g")
                   .attr("class", "yaxis2")
                   .attr("transform", "translate(25,0)")
                   .call(yAxis2)
+                  .style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'})  
                   .append("text")
                   .attr("transform", "rotate(-90)")
                   .attr("y", 6)
-                  .attr("dy", ".71em")
+                  .attr("x", -50)
+                  .attr("dy", "-3em")
                   .style("text-anchor", "end")
                   .text("Number of Deaths");
 
@@ -895,6 +1003,7 @@
                .data(ageDataMale)
                .enter()
                .append("text")
+               .style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'})  
                .text(function(d) {
                     return d.number;
                })
@@ -923,6 +1032,7 @@
                .data(ageDataFemale)
                .enter()
                .append("text")
+               .style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'})  
                .text(function(d) {
                     return d.number;
                })
@@ -950,14 +1060,14 @@
               .each(function(d, i) {
                 var g = d3.select(this);
                 g.append("rect")
-                  .attr("x", widthChart - 65)
+                  .attr("x", widthChart - 415)
                   .attr("y", i*25)
                   .attr("width", 10)
                   .attr("height", 10)
                   .style("fill", color_hash[String(i)][1]);
                 
                 g.append("text")
-                  .attr("x", widthChart - 50)
+                  .attr("x", widthChart - 400)
                   .attr("y", i * 25 + 8)
                   .attr("height",30)
                   .attr("width",100)
@@ -1026,6 +1136,7 @@
                       newRowsMale.exit().remove();               
 
                 deathdayChart.selectAll(".chart1Bar").style("fill", '#2db1b9');
+
                     
             }   
    
